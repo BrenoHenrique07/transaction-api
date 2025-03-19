@@ -1,14 +1,10 @@
 package br.com.nobre.transaction_api.transacao.service;
 
-import br.com.nobre.transaction_api.transacao.TransacaoRepository;
+import br.com.nobre.transaction_api.transacao.repository.TransacaoRepository;
 import br.com.nobre.transaction_api.transacao.dto.TransacaoDto;
 import br.com.nobre.transaction_api.transacao.model.Transacao;
 import br.com.nobre.transaction_api.transacao.validate.TransacaoValidate;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
 @Service
 public class TransacaoService {
@@ -26,6 +22,10 @@ public class TransacaoService {
 
         transacaoRepository.save(transacao);
 
+    }
+
+    public void deleteAllTransacoes() {
+        transacaoRepository.deleteAll();
     }
 
 }

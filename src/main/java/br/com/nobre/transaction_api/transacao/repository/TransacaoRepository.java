@@ -1,4 +1,4 @@
-package br.com.nobre.transaction_api.transacao;
+package br.com.nobre.transaction_api.transacao.repository;
 
 import br.com.nobre.transaction_api.transacao.model.Transacao;
 import org.springframework.stereotype.Repository;
@@ -17,6 +17,10 @@ public class TransacaoRepository {
 
     public void save(Transacao transacao) {
         this.transacoes.add(transacao);
+    }
+
+    public void deleteAll() {
+        this.transacoes.clear();
     }
 
 }
