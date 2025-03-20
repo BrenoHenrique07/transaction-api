@@ -23,4 +23,8 @@ public class TransacaoRepository {
         this.transacoes.clear();
     }
 
+    public List<Transacao> getAllTransacoes() {
+        return transacoes;
+    }
+
 }
