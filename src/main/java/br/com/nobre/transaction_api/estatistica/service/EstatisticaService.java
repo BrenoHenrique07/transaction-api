@@ -14,13 +14,16 @@ import java.util.List;
 @Service
 public class EstatisticaService {
 
+    private final int DEFAULT_TIME = 60;
     private final TransacaoRepository transacaoRepository;
 
     public EstatisticaService(TransacaoRepository transacaoRepository) {
         this.transacaoRepository = transacaoRepository;
     }
 
-    public EstatisticaDto getEstatistica() {
+    public EstatisticaDto getEstatistica(Integer time) {
+
+        time = time == null ? DEFAULT_TIME : time;
 
         List<Transacao> transacoes = transacaoRepository.getAllTransacoes();
         Estatistica estatistica = new Estatistica();
@@ -28,7 +31,7 @@ public class EstatisticaService {
         int count = 0;
         for(Transacao transacao : transacoes) {
 
-            if(transacao.getDataHora().isBefore(OffsetDateTime.now().minusSeconds(60))) {
+            if(transacao.getDataHora().isBefore(OffsetDateTime.now().minusSeconds(time))) {
                 continue;
             }
 
